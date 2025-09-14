@@ -91,7 +91,7 @@ try:
         send_email(message_positive)
         send_sms()
     else:
-        pass
+        print("the code works")
 except Exception as e:
     print(f"Selenium error in no_offer: {e}")
 finally:

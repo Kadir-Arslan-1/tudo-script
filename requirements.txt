@@ -1,0 +1,8 @@
+requests
+pip
+attrs
+PySocks
+redis
+python-dotenv
+twilio
+selenium

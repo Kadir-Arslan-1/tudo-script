@@ -1,0 +1,30 @@
+name: Run tudo_main.py every 2 minutes
+
+on:
+  schedule:
+    - cron: "*/2 * * * *"  # her 2 dakikada bir
+  workflow_dispatch:        # manuel tetikleme opsiyonel
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'   # ihtiyacına göre değiştir
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Python script
+        env:
+          mail_email: ${{ secrets.mail_email }}
+          mail_password: ${{ secrets.mail_password }}
+          account_sid: ${{ secrets.account_sid }}
+          auth_token: ${{ secrets.auth_token }}
+        run: python tudo_main.py

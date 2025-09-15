@@ -2,8 +2,7 @@ name: Run tudo_main.py every 2 minutes
 
 on:
   schedule:
-    - cron: "*/5 * * * *"  # every 5 minutes
-  # workflow_dispatch:        # manual trigger
+    - cron: "*/5 * * * *"   # every 5 minutes
 
 jobs:
   run-script:

@@ -2,8 +2,8 @@ name: Run tudo_main.py every 2 minutes
 
 on:
   schedule:
-    - cron: "*/5 * * * *"  # her 2 dakikada bir
-  workflow_dispatch:        # manuel tetikleme opsiyonel
+    - cron: "*5 * * * *"  # every 5 minutes
+  workflow_dispatch:        # manuel trigger
 
 jobs:
   run-script:

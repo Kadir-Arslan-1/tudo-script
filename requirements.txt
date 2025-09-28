@@ -4,5 +4,5 @@ attrs
 PySocks
 redis
 python-dotenv
-twilio
 beautifulsoup4
+

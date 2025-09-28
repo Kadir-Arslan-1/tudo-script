@@ -5,7 +5,6 @@ import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 import smtplib
-from twilio.rest import Client
 
 load_dotenv()
 
@@ -14,8 +13,8 @@ SMTP_PORT = 587
 MAIL_EMAIL = os.getenv("mail_email")
 MAIL_PASSWORD = os.getenv("mail_password")  # use app password
 
-TW_SID = os.getenv("account_sid")
-TW_TOKEN = os.getenv("auth_token")
+# TW_SID = os.getenv("account_sid")
+# TW_TOKEN = os.getenv("auth_token")
 TW_FROM = "+13516664633"
 TW_TO = "+905537497743"
 
@@ -31,11 +30,11 @@ def send_email(msg):
         s.login(MAIL_EMAIL, MAIL_PASSWORD)
         s.sendmail(MAIL_EMAIL, [MAIL_EMAIL], f"Subject:TU-Dortmund\n\n{msg}")
 
-def send_sms(body):
-    if not TW_SID or not TW_TOKEN:
-        return
-    client = Client(TW_SID, TW_TOKEN)
-    client.messages.create(from_=TW_FROM, to=TW_TO, body=body)
+# def send_sms(body):
+#     if not TW_SID or not TW_TOKEN:
+#         return
+#     client = Client(TW_SID, TW_TOKEN)
+#     client.messages.create(from_=TW_FROM, to=TW_TO, body=body)
 
 def check_site():
     try:
@@ -66,7 +65,7 @@ if __name__ == "__main__":
     has_no_offer = check_site()
     if not has_no_offer:
         send_email("There is a room at TU dortmund")
-        send_sms("There is a room at TU dortmund")
+        # send_sms("There is a room at TU dortmund")
     else:
         # send_email("There is a room at TU dortmund")
         # send_sms("There is a room at TU dortmund")

@@ -5,4 +5,4 @@ PySocks
 redis
 python-dotenv
 twilio
-selenium
+
